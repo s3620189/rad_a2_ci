@@ -1,19 +1,20 @@
 output "instance_public_ip" {
-  value = 
+  value = "none"
 }
 
 output "lb_endpoint" {
-  value = 
+  value = "none"
 }
 
 output "db_endpoint" {
-  value = 
+  value = "none"
 }
 
 output "db_user" {
-  value = 
+  value = "none"
 }
 
 output "db_pass" {
-  value = 
+  value = "none"
 }
+
