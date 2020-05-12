@@ -21,30 +21,26 @@ data "aws_ami" "amazon-linux-2" {
   }
 }
 
-resource "aws_launch_configuration" "ec2_assignment2_app" {
-  name            = "web_config"
-  image_id        = data.aws_ami.amazon-linux-2.id
-  instance_type   = "t2.micro"
-  security_groups = [aws_security_group.allow_http_ssh.id]
+resource "aws_instance" "a2_app" {
 
-  key_name = aws_key_pair.deployer.key_name
+  ami                    = data.aws_ami.amazon-linux-2.id
+  instance_type          = "t2.micro"
+  vpc_security_group_ids = [aws_security_group.allow_http_ssh.id]
+  key_name               = aws_key_pair.deployer.key_name
+  subnet_id              = aws_subnet.private_az1.id
+  tags = {
+    Name = "A2"
+  }
 }
+
+
+
 
 resource "aws_lb_target_group" "a2_app" {
   name     = "a2-app-target-group"
   port     = 80
   protocol = "HTTP"
   vpc_id   = aws_vpc.main.id
-
-}
-resource "aws_autoscaling_group" "a2_app" {
-  name                 = "terraform-a2"
-  launch_configuration = aws_launch_configuration.ec2_assignment2_app.name
-  min_size             = 1
-  max_size             = 1
-  vpc_zone_identifier  = [aws_subnet.private_az1.id, aws_subnet.private_az2.id, aws_subnet.private_az3.id]
-  target_group_arns    = [aws_lb_target_group.a2_app.arn]
-
 
 }
 
