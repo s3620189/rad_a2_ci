@@ -36,9 +36,9 @@ jobs:
             cat Makefile
             make init
             make up
-            sudo chomd 777 run_ansible.sh
-            sudo chomd 777 auto_get_db_config.sh
-            sudo chomd 777 auto_set_hosts_ip.sh
+            sudo chmod 777 run_ansible.sh
+            sudo chmod 777 auto_get_db_config.sh
+            sudo chmod 777 auto_set_hosts_ip.sh
             sudo ./run_ansible.sh
 workflows:
   version: 2.1
