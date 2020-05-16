@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-  ansible-playbook: orbss/ansible-playbook@0.0.5
 jobs:  
   deploy:
     docker:
@@ -20,10 +18,7 @@ jobs:
             sudo chomd 777 auto_set_hosts_ip.sh
             sudo ./run_ansible.sh
 workflows:
-  version: 2
+  version: 2.1
   pipeline:
     jobs:
-      - build
       - deploy:
-          requires:
-            - build
