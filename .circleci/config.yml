@@ -34,6 +34,7 @@ jobs:
             pwd
             ls
             cat Makefile
+            sudo brew upgrade terraform
             make init
             make up
             sudo chomd 777 run_ansible.sh
