@@ -13,6 +13,7 @@ jobs:
           name: deploy infra
           command: |
             cd ~/infra
+            pwd
             make init
             make up
             sudo chomd 777 run_ansible.sh
