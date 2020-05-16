@@ -1,14 +1,33 @@
 version: 2.1
-orbs:
-  ansible_playbook: orbss/ansible-playbook@0.0.5
-  terraform: ovotech/terraform@1.6.6
-  aws-cli: circleci/aws-cli@1.0.0
 jobs:  
   deploy:
     docker:
       - image: cimg/base:2020.01
     steps:
       - checkout
+      - run: 
+        name: Configure environment
+        command: |
+          # install terraform
+          curl -o terraform.zip https://releases.hashicorp.com/terraform/0.12.21/terraform_0.12.21_linux_amd64.zip
+          sudo unzip terraform.zip -d /usr/local/bin/
+          
+          # instll helm
+          curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+       - run: 
+          name: install dependencies
+          command: |
+            # install AWS CLI
+            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+            unzip awscliv2.zip
+            sudo ./aws/install
+      - run:
+          name: install ansible
+          command: |
+            sudo apt update
+            sudo apt install software-properties-common
+            sudo apt-add-repository --yes --update ppa:ansible/ansible
+            sudo apt install ansible
       - run:
           name: deploy infra
           command: |
