@@ -5,10 +5,10 @@ orbs:
   aws-cli: circleci/aws-cli@1.0.0
 jobs:  
   deploy:
-    working_directory: ~/infra
     docker:
       - image: cimg/base:2020.01
     steps:
+      - checkout
       - run:
           name: deploy infra
           command: |
