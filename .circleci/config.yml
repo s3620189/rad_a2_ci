@@ -23,8 +23,8 @@ jobs:
       - run:
           name: install ansible
           command: |
-            apt install python3-pip
-            pip install --user ansible
+            sudo apt install python3-pip
+            sudo pip install --user ansible
       - run:
           name: deploy infra
           command: |
