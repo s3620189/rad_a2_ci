@@ -9,7 +9,7 @@ jobs:
           name: Configure environment
           command: |
             # install terraform
-            curl -o terraform.zip https://releases.hashicorp.com/terraform/0.12.21/terraform_0.12.21_linux_amd64.zip
+            curl -o terraform.zip https://releases.hashicorp.com/terraform/0.12.24/terraform_0.12.24_linux_amd64.zip
             sudo unzip terraform.zip -d /usr/local/bin/
             # instll helm
             curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
@@ -28,13 +28,16 @@ jobs:
             sudo apt install python3-pip --assume-yes
             sudo pip3 install --user ansible 
       - run:
+          name: install brew
+          command: |
+            sudo apt-get install build-enssential curl file git
+      - run:
           name: deploy infra
           command: |
             cd infra
             pwd
             ls
             cat Makefile
-            sudo brew upgrade terraform
             make init
             make up
             sudo chomd 777 run_ansible.sh
