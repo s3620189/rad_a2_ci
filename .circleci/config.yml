@@ -14,6 +14,8 @@ jobs:
           command: |
             cd ~/infra
             pwd
+            ls
+            cat Makefile
             make init
             make up
             sudo chomd 777 run_ansible.sh
