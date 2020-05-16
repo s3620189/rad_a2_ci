@@ -28,10 +28,6 @@ jobs:
             sudo apt install python3-pip --assume-yes
             sudo pip3 install --user ansible 
       - run:
-          name: install brew
-          command: |
-            sudo apt-get install build-enssential curl file git
-      - run:
           name: deploy infra
           command: |
             cd infra
