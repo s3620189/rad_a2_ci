@@ -1,5 +1,5 @@
 up:
-	terraform apply --auto-approve
+	terraform apply --auto-approve -var 'public_key=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJb9DUj9uEPKTbGcbO+X0N10HOiZvFwqdLGFTgEM7z0Buju8+GMW2qoebCk/ErxFriJQ7/0JMDvaA1l0j4YNMgP2ariT0SWnnPrjSjAWQeOLIXe2xZwicduHs/sL3aAxSG/YEdpxGjwgSp6vHIF3DqGM4yKrK7c5fE6GRzccv50W2RccD6r9C67AaAkfS07M4NhRBiDLLFKL7eGmWkGjRrZoqfzKVfPl/x9odYtbM6rpiNWxMUCvvVyWhaWtwo7vGUjk2WvCSZMdKugBzyiKI31pYeqLZH5pv9Ff2jrbn30Mr7Jy3XbhlsUwCkeDwaSj5GuvOvfy+HAqaO/K6wr2HH s3620189@student.rmit.edu.au'
 down:
 	terraform destroy --auto--approve
 init:
