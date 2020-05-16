@@ -25,7 +25,7 @@ jobs:
           command: |
             sudo add-apt-repository universe
             sudo apt update
-            sudo apt install python3-pip --assumep-yes
+            sudo apt install python3-pip --assume-yes
             sudo pip install --user ansible --assume-yes
       - run:
           name: deploy infra
