@@ -23,7 +23,7 @@ jobs:
       - run:
           name: install ansible
           command: |
-            sudo add-apt-repository universe --assumep-yes
+            sudo add-apt-repository universe
             sudo apt update
             sudo apt install python3-pip --assumep-yes
             sudo pip install --user ansible --assume-yes
