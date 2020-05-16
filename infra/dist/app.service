@@ -1,0 +1,16 @@
+[Unit]
+
+Description=app service
+After=network.target
+
+[Service]
+
+Type=simple
+User=root
+WorkingDirectory=/home/ec2-user/app/dist/
+ExecStart=/home/ec2-user/app/dist/start_app.sh
+Restart=on-failure
+
+
+[Install]
+WantedBy=multi-user.target

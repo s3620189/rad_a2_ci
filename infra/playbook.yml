@@ -1,0 +1,47 @@
+- name: Deploy Application
+  hosts: all
+  tasks:
+    - name: deploy all
+      become: yes
+      unarchive:
+        src: https://github.com/servian/TechTestApp/releases/download/v.0.6.0/TechTestApp_v.0.6.0_linux64.zip
+        dest: app/
+        remote_src: yes
+        owner: ec2-user
+        group: ec2-user
+        mode: 0777
+    - name: upload db config file
+      template:
+        src: dist/conf.toml
+        dest: app/dist/conf.toml
+        owner: ec2-user
+        group: ec2-user
+        mode: 0666
+  
+    - name: upload service
+      template:
+        src: dist/app.service
+        dest: app/dist/
+        owner: ec2-user
+        group: ec2-user
+        mode: 0777
+ 
+    - name: upload start_app
+      template:
+        src: dist/start_app.sh
+        dest: app/dist/
+        owner: ec2-user
+        group: ec2-user
+        mode: 0777
+    - name: upload auto_set_systemd
+      template:
+        src: dist/auto_set_systemd.sh
+        dest: app/dist/
+        owner: ec2-user
+        group: ec2-user
+        mode: 0777
+    - name: auto set systemd
+      command: /home/ec2-user/app/dist/auto_set_systemd.sh
+    - name: reboot after systemd completed
+      become: yes 
+      reboot:

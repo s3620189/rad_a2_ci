@@ -6,10 +6,18 @@ output "lb_endpoint" {
   value = aws_lb.a2_app.dns_name
 }
 
+output "db_name" {
+  value = aws_db_instance.default.name
+}
+output "db_port" {
+  value = aws_db_instance.default.port
+}
 output "db_endpoint" {
   value = aws_db_instance.default.endpoint
 }
-
+output "db_address" {
+  value = aws_db_instance.default.address
+}
 output "db_user" {
   value = aws_db_instance.default.username
 }

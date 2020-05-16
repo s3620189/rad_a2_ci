@@ -8,6 +8,7 @@ resource "aws_db_instance" "default" {
   username               = "db_user"
   password               = "db_password"
   vpc_security_group_ids = [aws_security_group.allow_http_ssh.id]
+  port                   = 5432
   db_subnet_group_name   = aws_db_subnet_group.data.name
   skip_final_snapshot    = true
 
