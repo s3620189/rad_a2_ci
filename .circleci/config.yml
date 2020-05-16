@@ -1,4 +1,10 @@
 version: 2.1
+orbs:
+  ansible_playbook: orbss/ansible-playbook@0.0.5
+orbs:
+  terraform: ovotech/terraform@1.6.6
+orbs:
+  aws-cli: circleci/aws-cli@1.0.0
 jobs:  
   deploy:
     working_directory: ~/infra
