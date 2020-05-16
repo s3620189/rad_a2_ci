@@ -1,10 +1,10 @@
 version: 2.1
+orbs:
+  ansible-playbook: orbss/ansible-playbook@0.0.5
 jobs:  
   deploy:
     docker:
       - image: cimg/base:2020.01
-    orbs:
-      ansible-playbook: orbss/ansible-playbook@0.0.5
     steps:
       - attach_workspace:
           at: ./
