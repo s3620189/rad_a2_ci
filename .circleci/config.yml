@@ -1,12 +1,10 @@
 version: 2.1
 jobs:  
   deploy:
+    working_directory: ~/infra
     docker:
       - image: cimg/base:2020.01
     steps:
-      - attach_workspace:
-          at: ./
-      - setup-cd
       - run:
           name: deploy infra
           command: |
